@@ -40,7 +40,7 @@ cache.get(1);      // returns 10, makes key 1 most recently used
 cache.put(3, 30);  // evicts key 2
 cache.get(2);      // returns -1 (not found)
 cache.get(3);      // returns 30
-
+```
 ## 📸 LRU Cache Output Demo
 
 The following screenshot shows sample output after inserting and accessing keys from the cache:
