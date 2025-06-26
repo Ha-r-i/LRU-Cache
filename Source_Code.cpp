@@ -4,6 +4,7 @@ using namespace std;
 
 #define fastio ios_base::sync_with_stdio(false); cin.tie(NULL);
 
+//Create double linked list with key and value 
 struct Node{
     int key,val;
     Node* prev;
@@ -16,21 +17,21 @@ struct Node{
     }
 };
 
-
+//making class for lru cache 
 class LRU_Cache{
 private:
     int capacity;
     unordered_map<int,Node*> mp;
     Node* head;
     Node* tail;
-
+    //delete function to delete the node which we want to
     void Delete_Node(Node* node){
         
         node->prev->next=node->next;
         node->next->prev=node->prev;
         
     }
-
+    //Funtion to add node after head node
     void Add_front(Node* node){
         head->next->prev=node;
         node->next=head->next;
@@ -39,6 +40,7 @@ private:
     }
 
 public:
+    //Constructor with the value of capactiy of the LRU Cache object
     LRU_Cache(int cap){
         capacity=cap;
         head=new Node(0,0);
@@ -47,6 +49,7 @@ public:
         tail->prev=head;
     }
 
+    //put function with key and value inputs that inserts the key and value in LRU cache 
     void put(int key,int value){
         if(mp.find(key)!=mp.end()){
             Node* temp=mp[key];
@@ -69,7 +72,8 @@ public:
             }
         }
     }
-
+    
+    //function that returns value is the key is present else returns -1
     int get(int key){
         if(mp.find(key)!=mp.end()){
             Node* temp=mp[key];
@@ -82,6 +86,7 @@ public:
         }
     }
 
+    //destructor that wll help to destroy any object created
     ~LRU_Cache() {
         Node* temp=head;
         while(temp){
