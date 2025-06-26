@@ -41,5 +41,5 @@ cache.put(3, 30);  // evicts key 2
 cache.get(2);      // returns -1 (not found)
 cache.get(3);      // returns 30
 
-![image](https://github.com/user-attachments/assets/a0137848-f7f0-4b51-9b7c-12963a63c3f5)
+
 
